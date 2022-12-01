@@ -1,37 +1,24 @@
-//字符串拷贝函数
-
-//计算src的长度len
-
-//用malloc申请长度为len+1的内存空间
-
-//将src字符串逐个字符复制到新申请的内存空间
-
-//新申请内存空间的最后一位放入'0'
-
-//返回新申请的内存空间指针
-
-#include<stdio.h>
-#include<string.h>
-#include<assert.h>
-char* strcpy(char* dest, const char* src)
+char* StrCpy(char* src)
 {
-	//指针断言
-	assert(dest != NULL);
-	assert(src!= NULL);
-	//由于在赋值过程中，dest的指向会被更改
-	//所以先保留首元素地址
-	char* ret = dest;
-	while (*dest++ = *src++)
-	{
-		;
+//1、计算src的长度 len
+	int len=0;
+	char* src1=src;
+	while(*src1!="\0"){
+		len++;
 	}
-	return ret;
+//2、用malloc申请长度为 len+1的内存空间
+	char* str=(char*) malloc(sizeof(char)*(len+1));
+//3、将src字符串逐个字符复制到新申请的内存空间
+	char *p1,*p2;
+	p1=src;p2=str;
+	for(;*p1!='\0';p1++,p2++){
+		*p2=*p1;
+	}
+//4、新申请内存空间的最后一位放入'\0'
+	*p2='\0';
+//5、返回新申请的内存空间指针
+	return *p2;
 }
-int main()
-{ 
-	char arr1[30] = "hello";
-	char arr2[] = "hello world!!!!!!";
-	my_strcpy(arr1, arr2);
-	printf("%s", arr1);
-	return 0;
-}
+/**
+本地编辑
+**/
